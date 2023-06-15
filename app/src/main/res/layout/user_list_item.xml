@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="modelResult"
+            type="com.myfitness.model.Results" />
+
+        <variable
+            name="mainViewModel"
+            type="com.myfitness.home.viewmodel.MainViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/image"
+            android:layout_width="@dimen/_70dp"
+            loadImage="@{modelResult.picture.large}"
+            android:layout_marginVertical="@dimen/_15dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="@dimen/_10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize90Percent"
+            android:layout_height="@dimen/_70dp"/>
+
+        <TextView
+            android:id="@+id/userName"
+            tools:text="suresh"
+            android:text='@{modelResult.name.title+" " + modelResult.name.first + " " + modelResult.name.last}'
+            android:layout_marginTop="@dimen/_2dp"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="@dimen/_20sp"
+            android:layout_marginStart="@dimen/_10dp"
+            app:layout_constraintTop_toTopOf="@id/image"
+            app:layout_constraintStart_toEndOf="@+id/image"
+            android:layout_width="@dimen/_150dp"
+            android:layout_height="wrap_content"/>
+
+
+        <ImageView
+            android:id="@+id/icMobile"
+            android:layout_marginTop="@dimen/_15dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="@dimen/_20sp"
+            android:src="@drawable/ic_call"
+            app:layout_constraintTop_toBottomOf="@+id/userName"
+            android:layout_marginStart="@dimen/_10dp"
+            app:layout_constraintStart_toEndOf="@+id/image"
+            android:layout_width="@dimen/_20dp"
+            android:layout_height="@dimen/_20dp"/>
+
+        <TextView
+            android:id="@+id/txtMobile"
+            android:layout_marginTop="@dimen/_15dp"
+            android:textColor="@color/black"
+            tools:text="9909412367"
+            android:onClick="@{()-> mainViewModel.openDialPad(modelResult.phone)}"
+            android:text="@{modelResult.phone}"
+            android:textSize="@dimen/_14sp"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/userName"
+            android:layout_marginStart="@dimen/_10dp"
+            app:layout_constraintStart_toEndOf="@+id/icMobile"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"/>
+
+        <ImageView
+            android:id="@+id/icDOB"
+            android:layout_marginTop="@dimen/_15dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="@dimen/_20sp"
+            android:src="@drawable/ic_dob"
+            android:layout_marginEnd="@dimen/_10dp"
+            app:layout_constraintTop_toBottomOf="@+id/userName"
+            android:layout_marginStart="@dimen/_10dp"
+            app:layout_constraintEnd_toStartOf="@id/txtDate"
+            android:layout_width="@dimen/_20dp"
+            android:layout_height="@dimen/_20dp"/>
+
+        <TextView
+            android:id="@+id/txtDate"
+            android:layout_marginTop="@dimen/_15dp"
+            android:textColor="@color/black"
+            tools:text="15-06-2023"
+            setDateFormatText = "@{modelResult.dob.date}"
+            android:textSize="@dimen/_14sp"
+            android:gravity="center"
+            android:layout_marginEnd="@dimen/_20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/userName"
+            android:layout_marginStart="@dimen/_10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"/>
+
+        <ImageView
+            android:id="@+id/btnMessage"
+            android:layout_marginTop="@dimen/_10dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sp"
+            android:src="@drawable/ic_message"
+            android:gravity="center"
+            android:layout_marginEnd="@dimen/_20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtDate"
+            android:layout_marginStart="@dimen/_10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"/>
+
+
+        <ImageView
+            android:id="@+id/icEmail"
+            android:layout_marginTop="@dimen/_10dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="@dimen/_20sp"
+            android:src="@drawable/ic_email"
+            app:layout_constraintTop_toBottomOf="@+id/icMobile"
+            android:layout_marginStart="@dimen/_10dp"
+            app:layout_constraintStart_toEndOf="@+id/image"
+            android:layout_width="@dimen/_20dp"
+            android:layout_height="@dimen/_20dp"/>
+
+        <TextView
+            android:id="@+id/txtEmail"
+            android:layout_marginTop="@dimen/_10dp"
+            android:textColor="@color/black"
+            tools:text="msureshprajapati@gmail.com"
+            android:text="@{modelResult.email}"
+            android:textSize="@dimen/_14sp"
+            android:onClick="@{()-> mainViewModel.emailRequest(modelResult.email)}"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/icMobile"
+            android:layout_marginStart="@dimen/_10dp"
+            app:layout_constraintStart_toEndOf="@+id/icEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"/>
+
+
+        <ImageView
+            android:id="@+id/icLocation"
+            android:layout_marginTop="@dimen/_10dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_marginBottom="@dimen/_10dp"
+            android:textSize="@dimen/_20sp"
+            android:src="@drawable/ic_location"
+            app:layout_constraintTop_toBottomOf="@+id/icEmail"
+            android:layout_marginStart="@dimen/_10dp"
+            app:layout_constraintStart_toEndOf="@+id/image"
+            android:layout_width="@dimen/_20dp"
+            android:layout_height="@dimen/_20dp"/>
+
+        <TextView
+            android:id="@+id/txtLocation"
+            android:layout_marginTop="@dimen/_10dp"
+            android:textColor="@color/black"
+            android:layout_marginEnd="@dimen/_20dp"
+            tools:text="Sukan Mall Cross Road, Science City Rd, Sola, Ahmedabad"
+            android:text='@{modelResult.location.city+", " + modelResult.location.state + ", " + modelResult.location.country}'
+            android:textSize="@dimen/_14sp"
+            android:ellipsize="end"
+            app:layout_constraintTop_toBottomOf="@+id/icEmail"
+            android:layout_marginStart="@dimen/_10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/icLocation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <View
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="#656262"
+            android:layout_marginTop="@dimen/_15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtLocation"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1dp"/>
+
+        <TextView
+
+            android:id="@+id/btnDetails"
+            android:text="Details"
+            android:onClick="@{()-> mainViewModel.openDetail(modelResult)}"
+            android:background="@drawable/detail_button_shape"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:paddingVertical="@dimen/_6dp"
+            android:paddingHorizontal="@dimen/_20dp"
+            android:textSize="@dimen/_15sp"
+            android:layout_marginEnd="@dimen/_20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="detailViewModel"
+            type="com.myfitness.details.DetailsViewModel" />
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#9F635F"
+            tools:context=".details.DetailsActivity">
+
+            <include
+                android:id="@+id/layTitle"
+                layout="@layout/tool_bar"
+                app:detailViewModel="@{detailViewModel}" />
+
+
+            <ImageView
+                android:id="@+id/imageBanner"
+                loadImage="@{detailViewModel.results.picture.large}"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_20dp"
+                android:layout_height="@dimen/_300dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layTitle" />
+
+            <ImageView
+                android:id="@+id/icBio"
+                android:layout_width="@dimen/_20dp"
+                android:layout_height="@dimen/_20dp"
+                android:layout_marginStart="@dimen/_10dp"
+                android:layout_marginTop="@dimen/_15dp"
+                android:src="@drawable/ic_call"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageBanner"
+                app:tint="@color/white" />
+
+            <TextView
+                android:id="@+id/txtBio"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/_10dp"
+                android:layout_marginTop="@dimen/_15dp"
+                android:gravity="center"
+                android:text="@string/bio"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_18sp"
+                app:layout_constraintStart_toEndOf="@+id/icBio"
+                app:layout_constraintTop_toBottomOf="@+id/imageBanner" />
+
+            <TextView
+                android:id="@+id/txtBioDetails"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="@dimen/_10dp"
+                android:layout_marginTop="@dimen/_15dp"
+                android:gravity="center"
+                android:text="@string/dummy_text"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/icBio"
+                tools:text="@string/dummy_text" />
+
+            <ImageView
+                android:id="@+id/icCall"
+                android:layout_width="@dimen/_20dp"
+                android:layout_height="@dimen/_20dp"
+                android:layout_marginStart="@dimen/_10dp"
+                android:layout_marginTop="@dimen/_15dp"
+                android:src="@drawable/ic_call"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_20sp"
+                android:textStyle="bold"
+                app:tint="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtBioDetails" />
+
+            <TextView
+                android:id="@+id/txtCall"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/_10dp"
+                android:layout_marginTop="@dimen/_15dp"
+                android:gravity="center"
+                android:onClick="@{()-> detailViewModel.openDialPad(detailViewModel.results.phone)}"
+                android:text="@{detailViewModel.results.phone}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_18sp"
+                app:layout_constraintStart_toEndOf="@+id/icCall"
+                app:layout_constraintTop_toBottomOf="@+id/txtBioDetails"
+                tools:text="9909412367" />
+
+
+            <ImageView
+                android:id="@+id/icEmail"
+                android:layout_width="@dimen/_20dp"
+                android:layout_height="@dimen/_20dp"
+                android:layout_marginStart="@dimen/_10dp"
+                android:layout_marginTop="@dimen/_15dp"
+                android:src="@drawable/ic_email"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_20sp"
+                app:tint="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtCall" />
+
+            <TextView
+                android:id="@+id/txtEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/_10dp"
+                android:layout_marginTop="@dimen/_15dp"
+                android:gravity="center"
+                android:onClick="@{()-> detailViewModel.emailRequest(detailViewModel.results.email)}"
+                android:text="@{detailViewModel.results.email}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_18sp"
+                app:layout_constraintStart_toEndOf="@+id/icCall"
+                app:layout_constraintTop_toBottomOf="@+id/txtCall"
+                tools:text="msuresh@gmail.com" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

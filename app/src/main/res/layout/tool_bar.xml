@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="detailViewModel"
+            type="com.myfitness.details.DetailsViewModel" />
+
+        <variable name="activity" type="com.myfitness.details.DetailsActivity"/>
+
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="#000000"
+        android:layout_height="@dimen/_60dp">
+
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_60dp"
+            android:gravity="center"
+            android:text="@{detailViewModel.results.name.first != null ? detailViewModel.results.name.first : `Bookings`}"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/btnBackArrow"
+            android:layout_marginStart="@dimen/_10dp"
+            android:onClick='@{() -> activity.onBackPressed()}'
+            android:padding="@dimen/_15dp"
+            android:visibility="gone"
+            android:src="@drawable/ic_back"
+            android:layout_width="@dimen/_60dp"
+            android:layout_height="@dimen/_60dp" />
+
+    </RelativeLayout>
+</layout>
